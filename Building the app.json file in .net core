@@ -1,0 +1,12 @@
+public static IConfiguration conf;
+
+public static IConfiguration BuildloginTypeJsonFile()
+        {
+            //Building the values from appSettings.json
+            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+             conf = configurationBuilder
+            .AddJsonFile($"PortalConfigValues.json", optional: false, reloadOnChange: true)
+            .Build();
+            LoginType = conf.GetSection("LoginType").Value;
+            return conf;
+        }
